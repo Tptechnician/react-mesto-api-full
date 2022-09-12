@@ -1,0 +1,11 @@
+.popup__content_type_authentication {
+    padding: 60px 36px 112px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+@media(min-width: 320px) and (max-width: 530px) {
+    .popup__content_type_authentication {
+        padding: 60px 10px 112px;
+    }
+}

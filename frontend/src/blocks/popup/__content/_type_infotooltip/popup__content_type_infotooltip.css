@@ -1,0 +1,11 @@
+.popup__content_type_infotooltip {
+    padding: 60px 36px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+@media(min-width: 320px) and (max-width: 530px) {
+    .popup__content_type_infotooltip {
+        padding: 50px 18px;
+    }
+}

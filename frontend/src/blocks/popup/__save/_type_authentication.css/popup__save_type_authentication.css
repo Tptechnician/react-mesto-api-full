@@ -1,0 +1,15 @@
+.popup__save_type_authentication {
+    margin: 211px 0 0;
+    background-color: white;
+    color: black;
+}
+
+@media(min-width: 320px) and (max-width: 530px) {
+    .popup__save_type_authentication {
+        margin: 273px 0 0;
+        width: 260px;
+        height: 46px;
+        font-size: 16px;
+        line-height: 1.18;
+    }
+}

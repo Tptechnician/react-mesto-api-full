@@ -1,0 +1,11 @@
+.popup__title_type_authentication {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+@media(min-width: 320px) and (max-width: 530px) {
+    .popup__title_type_authentication {
+        font-size: 20px;
+    }
+}

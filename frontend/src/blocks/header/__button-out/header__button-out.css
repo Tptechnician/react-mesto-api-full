@@ -1,0 +1,22 @@
+.header__button-out {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    width: 56px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.header__button-out:hover {
+    opacity: 0.6;
+}
+
+@media(min-width: 530px) {
+    .header__button-out {
+        display: block;
+    }
+}

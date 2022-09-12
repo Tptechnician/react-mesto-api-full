@@ -1,0 +1,4 @@
+.header_menu-open {
+    flex-direction: column-reverse;
+    padding-bottom: 27px;
+}
