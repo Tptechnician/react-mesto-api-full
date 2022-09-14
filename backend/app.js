@@ -10,7 +10,7 @@ const app = express();
 const { auth } = require('./middlewares/auth');
 const { errorHandler } = require('./errors/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 const {
   createUser,
@@ -34,7 +34,7 @@ async function main() {
 
 main();
 
-// app.use(cors);
+app.use(cors);
 
 app.use(express.json());
 app.use(cookieParser());
