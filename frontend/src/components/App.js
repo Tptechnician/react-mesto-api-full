@@ -29,6 +29,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  const [jwt, setJwt] = React.useState('');
 
   const [isSuccessRegistration, setisSuccessRegistration] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -65,7 +66,7 @@ function App() {
   }
 
   useEffect(() => {
-    api.getUserData()
+    api.getUserData(jwt)
       .then(([userData, cardsData]) => {
         setCurrentUser(userData);
         setCards(cardsData);
@@ -78,7 +79,7 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    api.changeLikeCardStatus(card._id, isLiked)
+    api.changeLikeCardStatus(card._id, isLiked, jwt)
       .then((newCard) => {
         setCards(cards.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
       })
@@ -89,7 +90,7 @@ function App() {
 
   function handleCardDelete(card) {
     setIsLoading(true);
-    api.deleteCard(card._id)
+    api.deleteCard(card._id, jwt)
       .then(() => {
         setCards(cards.filter((currentCard) => currentCard._id !== card._id));
         closeAllPopups();
@@ -104,7 +105,7 @@ function App() {
 
   function handleUpdateUser(data) {
     setIsLoading(true);
-    api.setUserInfo(data)
+    api.setUserInfo(data, jwt)
       .then((userData) => {
         setCurrentUser(userData);
         closeAllPopups();
@@ -119,7 +120,7 @@ function App() {
 
   function handleUpdateAvatar(data) {
     setIsLoading(true);
-    api.setUserAvatar(data)
+    api.setUserAvatar(data, jwt)
       .then((userData) => {
         setCurrentUser(userData);
         closeAllPopups();
@@ -134,7 +135,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setIsLoading(true);
-    api.addCard(data)
+    api.addCard(data, jwt)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -179,17 +180,18 @@ function App() {
 
   function handleCheckToken() {
     const jwt = localStorage.getItem('jwt');
-    auth.checkToken(jwt)
-      .then(
-        (data) => {
-          setUserEmail(data.data.email);
-          setLoggedIn(true);
-          history.push('/');
-        },
-        (err) => {
-          console.log(err);
-        }
-      )
+      setJwt(jwt)
+      auth.checkToken(jwt)
+        .then(
+          (data) => {
+            setUserEmail(data.data.email);
+            setLoggedIn(true);
+            history.push('/');
+          },
+          (err) => {
+            console.log(err);
+          }
+        )
   }
 
   function handleLoggedOut() {

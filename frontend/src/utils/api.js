@@ -13,75 +13,96 @@ export class Api {
   }
 
   //Запрос на удаление карточки
-  deleteCard(id) {
+  deleteCard(id, jwt) {
     return fetch(`${this._url}/cards/${id}`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'DELETE'
     }).then(this._getResponseData);
   }
   
-  changeLikeCardStatus(id, isLiked) {
+  changeLikeCardStatus(id, isLiked, jwt) {
     if (isLiked) {
-      return this.deleteLike(id);
+      return this.deleteLike(id, jwt);
     } else {
-      return this.addLike(id);
+      return this.addLike(id, jwt);
     }
   }
 
   //Запрос на удаление лайка
-  deleteLike(id){
+  deleteLike(id, jwt){
     return fetch(`${this._url}/cards/likes/${id}`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'DELETE'
     }).then(this._getResponseData);
   }
 
   //Запрос на добавление лайка
-  addLike(id){
+  addLike(id, jwt){
     return fetch(`${this._url}/cards/likes/${id}`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'PUT'
     }).then(this._getResponseData);
   }
 
   //Запрос на добовление карточек
-  addCard(data){
+  addCard(data, jwt){
     const dataCard = {
       name: data.name,
       link: data.link
     };
     return fetch(`${this._url}/cards`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'POST',
       body: JSON.stringify(dataCard),
     }).then(this._getResponseData);
   }
 
   //Запрос на получение информации о пользователе и карточек
-  getUserData() {
-    return Promise.all([this.getUserInfo(), this.getCard()]);
+  getUserData(jwt) {
+    return Promise.all([this.getUserInfo(jwt), this.getCard(jwt)]);
   }
   
   //Запрос на получение информации о пользователе
-  getUserInfo() {
+  getUserInfo(jwt) {
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'GET'
     }).then(this._getResponseData);
   }
 
   //Запрос на получение карточек
-  getCard(){
+  getCard(jwt){
     return fetch(`${this._url}/cards`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'GET'
     }).then(this._getResponseData);
   }
 
   //Запрос на изменение информации о пользователе
-  setUserInfo(data) {
+  setUserInfo(data, jwt) {
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'PATCH',
       body: JSON.stringify({
         name: data.name, 
@@ -91,9 +112,12 @@ export class Api {
   }
 
   //Запрос на изменение картинки пользователя
-  setUserAvatar(data) {
+  setUserAvatar(data, jwt) {
     return fetch(`${this._url}/users/me/avatar`, {
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${jwt}`
+      },
       method: 'PATCH',
       body: JSON.stringify({
         avatar: data.avatar
@@ -103,10 +127,9 @@ export class Api {
 }
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-43',
+  url: 'https://mesto.backend.nomoredomains.sbs',
   headers: {
-    authorization: '8bdc11e5-0409-4a66-a2e9-cb41b1679eea',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }
 });
 
