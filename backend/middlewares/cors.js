@@ -2,6 +2,7 @@ const allowedCors = [
   'https://tptechnician.students.nomoredomains.sbs',
   'https://mesto.backend.nomoredomains.sbs',
   'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 const cors = (req, res, next) => {

@@ -30,7 +30,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [jwt, setJwt] = React.useState('');
-
+  
   const [isSuccessRegistration, setisSuccessRegistration] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState('');

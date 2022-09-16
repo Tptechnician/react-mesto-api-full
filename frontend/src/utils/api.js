@@ -127,7 +127,7 @@ export class Api {
 }
 
 const api = new Api({
-  url: 'https://mesto.backend.nomoredomains.sbs',
+  url: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   }
