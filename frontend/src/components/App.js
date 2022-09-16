@@ -30,7 +30,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [jwt, setJwt] = React.useState('');
-  
+
   const [isSuccessRegistration, setisSuccessRegistration] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState('');
@@ -74,7 +74,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -168,7 +168,7 @@ function App() {
     auth.authorize(data)
       .then(
         (data) => {
-          localStorage.setItem('jwt', data.token);
+          localStorage.setItem('jwt', data.data);
           setLoggedIn(true);
           history.push('/');
         },
@@ -205,7 +205,7 @@ function App() {
     if (token) {
       handleCheckToken();
     }
-  });
+  }, []);
 
   function handleCardClick(card) {
     setSelectedCard(card);

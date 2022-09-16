@@ -25,6 +25,7 @@ class Auth {
   authorize(data) {
     return fetch(`${this._url}/signin`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         password: data.password,
@@ -36,6 +37,7 @@ class Auth {
   checkToken(token) {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${token}`

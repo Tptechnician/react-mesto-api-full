@@ -77,6 +77,7 @@ export class Api {
   //Запрос на получение информации о пользователе
   getUserInfo(jwt) {
     return fetch(`${this._url}/users/me`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`
@@ -88,6 +89,7 @@ export class Api {
   //Запрос на получение карточек
   getCard(jwt){
     return fetch(`${this._url}/cards`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`
@@ -129,6 +131,7 @@ export class Api {
 const api = new Api({
   url: 'http://localhost:3000',
   headers: {
+    'credentials': 'include',
     'Content-Type': 'application/json',
   }
 });
