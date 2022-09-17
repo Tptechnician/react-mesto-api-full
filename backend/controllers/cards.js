@@ -34,7 +34,6 @@ module.exports.deleteCard = (req, res, next) => {
 };
 
 module.exports.createCards = (req, res, next) => {
-  console.log(req.body);
   const { name, link } = req.body;
   const owner = req.user._id;
   Card.create({ name, link, owner })

@@ -34,7 +34,7 @@ export class Api {
 
   //Запрос на удаление лайка
   deleteLike(id, jwt){
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       credentials: 'include',
       headers: {
         ...this._headers,
@@ -46,7 +46,7 @@ export class Api {
 
   //Запрос на добавление лайка
   addLike(id, jwt){
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       credentials: 'include',
       headers: {
         ...this._headers,
@@ -105,6 +105,7 @@ export class Api {
   //Запрос на изменение информации о пользователе
   setUserInfo(data, jwt) {
     return fetch(`${this._url}/users/me`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`
@@ -120,6 +121,7 @@ export class Api {
   //Запрос на изменение картинки пользователя
   setUserAvatar(data, jwt) {
     return fetch(`${this._url}/users/me/avatar`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`

@@ -30,7 +30,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [jwt, setJwt] = React.useState('');
-  console.log(jwt);
 
   const [isSuccessRegistration, setisSuccessRegistration] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -78,8 +77,7 @@ function App() {
   }, []);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked, jwt)
       .then((newCard) => {
         setCards(cards.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
