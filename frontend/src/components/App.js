@@ -74,7 +74,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [jwt]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i === currentUser._id);
@@ -202,7 +202,6 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
-    console.log(token);
     if (token) {
       handleCheckToken();
     }

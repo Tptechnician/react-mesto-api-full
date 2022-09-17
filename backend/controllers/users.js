@@ -64,9 +64,6 @@ module.exports.createUser = (req, res, next) => {
       }
     })
     .catch(next);
-
-  /*
-    */
 };
 
 module.exports.updateUser = (req, res, next) => {
