@@ -15,6 +15,7 @@ export class Api {
   //Запрос на удаление карточки
   deleteCard(id, jwt) {
     return fetch(`${this._url}/cards/${id}`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`
@@ -34,6 +35,7 @@ export class Api {
   //Запрос на удаление лайка
   deleteLike(id, jwt){
     return fetch(`${this._url}/cards/likes/${id}`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`
@@ -45,6 +47,7 @@ export class Api {
   //Запрос на добавление лайка
   addLike(id, jwt){
     return fetch(`${this._url}/cards/likes/${id}`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`
@@ -60,6 +63,7 @@ export class Api {
       link: data.link
     };
     return fetch(`${this._url}/cards`, {
+      credentials: 'include',
       headers: {
         ...this._headers,
         Authorization: `Bearer ${jwt}`

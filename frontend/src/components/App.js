@@ -30,6 +30,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [jwt, setJwt] = React.useState('');
+  console.log(jwt);
 
   const [isSuccessRegistration, setisSuccessRegistration] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -168,7 +169,8 @@ function App() {
     auth.authorize(data)
       .then(
         (data) => {
-          localStorage.setItem('jwt', data.data);
+          localStorage.setItem('jwt', data.data._id);
+          setCurrentUser(data.data);
           setLoggedIn(true);
           history.push('/');
         },
@@ -184,7 +186,7 @@ function App() {
       auth.checkToken(jwt)
         .then(
           (data) => {
-            setUserEmail(data.data.email);
+            setUserEmail(data.email);
             setLoggedIn(true);
             history.push('/');
           },
@@ -202,6 +204,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
+    console.log(token);
     if (token) {
       handleCheckToken();
     }
