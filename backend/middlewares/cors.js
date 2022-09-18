@@ -1,6 +1,8 @@
 const allowedCors = [
   'https://tptechnician.students.nomoredomains.sbs',
   'https://mesto.backend.nomoredomains.sbs',
+  'http://tptechnician.students.nomoredomains.sbs',
+  'http://mesto.backend.nomoredomains.sbs',
   'http://localhost:3000',
   'http://localhost:3001',
 ];
