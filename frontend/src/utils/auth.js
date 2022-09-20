@@ -52,7 +52,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  url: 'http://:mesto.backend.nomoredomains.sbs',
+  url: 'https://mesto.backend.nomoredomains.sbs',
   headers: {
     'Content-Type': 'application/json'
   }
