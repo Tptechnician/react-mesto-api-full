@@ -130,3 +130,20 @@ module.exports.login = (req, res, next) => {
     })
     .catch(next);
 };
+
+module.exports.loginout = (req, res, next) => {
+  const decoded = jwt.decode(req.cookies.jwt);
+  const id = decoded._id;
+  User.findById(id)
+    .then((user) => {
+      if (!user) {
+        throw new ReqNotFound('Пользователя с таким id нет');
+      }
+      res.clearCookie('jwt');
+      res.send({ message: 'jwt удалён' });
+    })
+    .catch((err) => {
+      res.send(err);
+    })
+    .catch(next);
+};

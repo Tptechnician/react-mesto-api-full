@@ -15,6 +15,7 @@ const cors = require('./middlewares/cors');
 const {
   createUser,
   login,
+  loginout,
 } = require('./controllers/users');
 
 async function main() {
@@ -63,6 +64,8 @@ app.post('/signup', celebrate({
       .regex(/^(https?:\/\/)?([\da-z.-]+)([a-z.]{2,6})([/\w.-]*)*\/?$/),
   }),
 }), createUser);
+
+app.delete('/signout', loginout);
 
 app.use(auth);
 

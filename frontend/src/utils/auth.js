@@ -34,20 +34,25 @@ class Auth {
     }).then(this._getResponseData);
   }
 
-  checkToken(token) {
+  checkToken() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
-      headers: {
-        ...this._headers,
-        Authorization: `Bearer ${token}`
-      }
+      headers: this._headers,
+    }).then(this._getResponseData)
+  }
+
+  LoggedOut() {
+    return fetch(`${this._url}/signout`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: this._headers,
     }).then(this._getResponseData)
   }
 }
 
 const auth = new Auth({
-  url: 'https://mesto.backend.nomoredomains.sbs',
+  url: 'http://:mesto.backend.nomoredomains.sbs',
   headers: {
     'Content-Type': 'application/json'
   }
