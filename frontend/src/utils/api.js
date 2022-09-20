@@ -113,7 +113,6 @@ export class Api {
 const api = new Api({
   url: 'https://mesto.backend.nomoredomains.sbs',
   headers: {
-    'credentials': 'include',
     'Content-Type': 'application/json',
   }
 });
