@@ -1,3 +1,4 @@
+[![Tests](https://github.com/Tptechnician/react-mesto-api-full/actions/workflows/tests.yml/badge.svg)](https://github.com/Tptechnician/react-mesto-api-full/actions/workflows/tests.yml)
 # Проект: Mesto
 
 ## Павел Дёмин
