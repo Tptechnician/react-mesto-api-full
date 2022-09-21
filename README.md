@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.129.38
+IP-адрес IP 84.201.129.38
 
 Frontend https://tptechnician.students.nomoredomains.sbs
 
